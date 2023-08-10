@@ -26,7 +26,47 @@ function cuentaRegresiva()
      */
 
     //obtenemos el tiempo expresado en segundos
-    
+    let segundos = Math.trunc( diferencia/1000 );
+    console.log(segundos);
+
+    //obtenemos el tiempo expresado en minutos
+    let minutos = Math.trunc( segundos/60 );
+    console.log(minutos);
+
+    //obtenemos el tiempo expresado en horas
+    let horas = Math.trunc( minutos/60 );
+    console.log( horas );
+
+    //obtenemos el tiempo expresado en días
+    let dias = Math.trunc( horas/24 );
+    console.log( dias );
+
+    /* calculamos erl resto en horas, minutos y segundos */
+    horas = horas%24;
+    minutos = minutos%60;
+    segundos = segundos%60;
+
+    //ceros iniciales
+    // segundos = agregarCero(segundos);
+    // minutos = agregarCero(minutos);
+    // horas = agregarCero(horas);
+    // dias = agregarCero(dias);
+
+    /* imprimimos en las span */
+    txtDias.innerText = agregarCero(dias);
+    txtHoras.innerText = agregarCero(horas);
+    txtMinutos.innerText = agregarCero(minutos);
+    txtSegundos.innerText = agregarCero(segundos);;
+
+}
+
+function agregarCero( numero )
+{
+    if( numero < 10 ){
+        numero = '0' + numero;
+    }
+    return numero;
 }
 
 cuentaRegresiva();
+setInterval( cuentaRegresiva );
